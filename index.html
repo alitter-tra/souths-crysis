@@ -51,41 +51,38 @@
     </div>
 
     <script>
-        const GOOGLE_SHEETS_ID = "1D9WO4uougYOeBRKGHaDLwRTbxk6RKwBxv9PQda8sGd4"; 
-        const GOOGLE_SHEETS_API = https://script.google.com/macros/s/AKfycbwO4ChbtqELE9kkgUf8DgztnS5hnXB5NmenDqrYNj4IK55J7kUVDRijtVqrh56pFvOhhQ/exec;
-        
-        async function loadDictionary() {
-            try {
-                const response = await fetch(GOOGLE_SHEETS_API);
-                const dictionary = await response.json();
-                window.dictionary = dictionary;
-            } catch (error) {
-                console.error("Ошибка загрузки словаря: ", error);
-            }
-        }
-        
-        function translateWord() {
-            const input = document.getElementById('search').value.trim().toLowerCase();
-            let result = "<p>Слово не найдено.</p>";
-            
-            if (window.dictionary) {
-                for (let key in window.dictionary) {
-                    if (key.toLowerCase() === input ||
-                        window.dictionary[key].transcription.toLowerCase() === input ||
-                        window.dictionary[key].translation.toLowerCase() === input) {
-                        result = 
-                            <p><strong>Эльфийское слово:</strong> ${key}</p>
-                            <p><strong>Транскрипция:</strong> ${window.dictionary[key].transcription}</p>
-                            <p><strong>Перевод:</strong> ${window.dictionary[key].translation}</p>;
-                        break;
-                    }
-                }
-            }
-            
-            document.getElementById('output').innerHTML = result;
-        }
-        
-        loadDictionary();
+       async function loadDictionary() {
+           try {
+               const response = await fetch("https://script.google.com/macros/s/AKfycbwrysx2iQmFau0-Y0wAqJWIpHMt3AsGLSD4R3KknlUcKHp8m0Ztnw8pNnGcP7dbRR3o0Q/exec");
+               const dictionary = await response.json();
+               window.dictionary = dictionary;
+           } catch (error) {
+               console.error("Ошибка загрузки словаря: ", error);
+           }
+       }
+
+       function translateWord() {
+           const input = document.getElementById('search').value.trim().toLowerCase();
+           let result = "<p>Слово не найдено.</p>";
+
+           if (window.dictionary) {
+               for (let key in window.dictionary) {
+                   if (key.toLowerCase() === input || 
+                       window.dictionary[key].transcription.toLowerCase() === input || 
+                       window.dictionary[key].translation.toLowerCase() === input) {
+                       result = `
+                           <p><strong>Эльфийское слово:</strong> ${key}</p>
+                           <p><strong>Транскрипция:</strong> ${window.dictionary[key].transcription}</p>
+                           <p><strong>Перевод:</strong> ${window.dictionary[key].translation}</p>`;
+                       break;
+                   }
+               }
+           }
+           
+           document.getElementById('output').innerHTML = result;
+       }
+
+       loadDictionary();
     </script>
 </body>
 </html>
