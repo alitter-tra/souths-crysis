@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Эльфийский Переводчик</title>
+    <style>
+        body {
+            background-image: url('https://www.transparenttextures.com/patterns/aged-paper.png');
+            font-family: 'Cinzel', serif;
+            text-align: center;
+            padding: 20px;
+            color: #3e2723;
+        }
+        .container {
+            background: rgba(255, 239, 186, 0.9);
+            padding: 20px;
+            border: 5px solid #7a5230;
+            border-radius: 15px;
+            display: inline-block;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+        input, button {
+            font-size: 18px;
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+        }
+        button {
+            background: #7a5230;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background: #5e3d20;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>📜 Эльфийский Переводчик 📜</h1>
+    <div class="container">
+        <input type="text" id="search" placeholder="Введите слово или перевод...">
+        <button onclick="translateWord()">🔮 Перевести</button>
+        <div id="output" class="result"></div>
+    </div>
+
+    <script>
+        const GOOGLE_SHEETS_ID = "1D9WO4uougYOeBRKGHaDLwRTbxk6RKwBxv9PQda8sGd4"; 
+        const GOOGLE_SHEETS_API = https://script.google.com/macros/s/AKfycbwO4ChbtqELE9kkgUf8DgztnS5hnXB5NmenDqrYNj4IK55J7kUVDRijtVqrh56pFvOhhQ/exec;
+        
+        async function loadDictionary() {
+            try {
+                const response = await fetch(GOOGLE_SHEETS_API);
+                const dictionary = await response.json();
+                window.dictionary = dictionary;
+            } catch (error) {
+                console.error("Ошибка загрузки словаря: ", error);
+            }
+        }
+        
+        function translateWord() {
+            const input = document.getElementById('search').value.trim().toLowerCase();
+            let result = "<p>Слово не найдено.</p>";
+            
+            if (window.dictionary) {
+                for (let key in window.dictionary) {
+                    if (key.toLowerCase() === input ||
+                        window.dictionary[key].transcription.toLowerCase() === input ||
+                        window.dictionary[key].translation.toLowerCase() === input) {
+                        result = 
+                            <p><strong>Эльфийское слово:</strong> ${key}</p>
+                            <p><strong>Транскрипция:</strong> ${window.dictionary[key].transcription}</p>
+                            <p><strong>Перевод:</strong> ${window.dictionary[key].translation}</p>;
+                        break;
+                    }
+                }
+            }
+            
+            document.getElementById('output').innerHTML = result;
+        }
+        
+        loadDictionary();
+    </script>
+</body>
+</html>
