@@ -74,21 +74,23 @@
 
         async function translateWord() {
             if (Object.keys(dictionary).length === 0) {
-                await loadDictionary(); // Грузим словарь, если он еще пуст
+                await loadDictionary(); // Ждём загрузки, если данных нет
             }
 
             const input = document.getElementById('search').value.trim().toLowerCase();
             let result = "<p>Слово не найдено.</p>";
+            let foundWords = [];
             let foundPhrases = [];
 
             for (let key in dictionary) {
-                if (key.toLowerCase() === input || 
-                    dictionary[key].transcription.toLowerCase() === input || 
-                    dictionary[key].translation.toLowerCase() === input) {
-                    result = `
+                if (key.toLowerCase().includes(input) || 
+                    dictionary[key].transcription.toLowerCase().includes(input) || 
+                    dictionary[key].translation.toLowerCase().includes(input)) {
+                    foundWords.push(`
                         <p><strong>Эльфийское слово:</strong> ${key}</p>
                         <p><strong>Транскрипция:</strong> ${dictionary[key].transcription}</p>
-                        <p><strong>Перевод:</strong> ${dictionary[key].translation}</p>`;
+                        <p><strong>Перевод:</strong> ${dictionary[key].translation}</p>
+                    `);
                 }
             }
 
@@ -98,12 +100,21 @@
                 }
             });
 
+            if (foundWords.length > 0) {
+                result = `<h3>🔍 Найденные слова:</h3> ${foundWords.join("")}`;
+            }
             if (foundPhrases.length > 0) {
-                result += `<h3>🔍 Найденные фразы:</h3> ${foundPhrases.join("")}`;
+                result += `<h3>📜 Найденные фразы:</h3> ${foundPhrases.join("")}`;
             }
 
             document.getElementById('output').innerHTML = result;
         }
+
+        document.getElementById('search').addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                translateWord();
+            }
+        });
 
         loadDictionary(); // Загружаем данные сразу при загрузке страницы
     </script>
