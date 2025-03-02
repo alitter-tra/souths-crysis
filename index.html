@@ -52,37 +52,39 @@
 
     <script>
        async function loadDictionary() {
-           try {
-               const response = await fetch("https://script.google.com/macros/s/AKfycbwrysx2iQmFau0-Y0wAqJWIpHMt3AsGLSD4R3KknlUcKHp8m0Ztnw8pNnGcP7dbRR3o0Q/exec");
-               const dictionary = await response.json();
-               window.dictionary = dictionary;
-           } catch (error) {
-               console.error("Ошибка загрузки словаря: ", error);
-           }
-       }
+    try {
+        const response = await fetch("https://script.google.com/macros/s/AKfycbznf95KvzNck6WJBzIuUm7d1Wij3liniu0pWUYWhyHvl4YwcMYTSoNi1N_jdECsVqx3gA/exec", {
+            mode: 'no-cors' // Отключаем CORS
+        });
+        const dictionary = await response.json();
+        window.dictionary = dictionary;
+    } catch (error) {
+        console.error("Ошибка загрузки словаря: ", error);
+    }
+}
 
-       function translateWord() {
-           const input = document.getElementById('search').value.trim().toLowerCase();
-           let result = "<p>Слово не найдено.</p>";
+function translateWord() {
+    const input = document.getElementById('search').value.trim().toLowerCase();
+    let result = "<p>Слово не найдено.</p>";
 
-           if (window.dictionary) {
-               for (let key in window.dictionary) {
-                   if (key.toLowerCase() === input || 
-                       window.dictionary[key].transcription.toLowerCase() === input || 
-                       window.dictionary[key].translation.toLowerCase() === input) {
-                       result = `
-                           <p><strong>Эльфийское слово:</strong> ${key}</p>
-                           <p><strong>Транскрипция:</strong> ${window.dictionary[key].transcription}</p>
-                           <p><strong>Перевод:</strong> ${window.dictionary[key].translation}</p>`;
-                       break;
-                   }
-               }
-           }
-           
-           document.getElementById('output').innerHTML = result;
-       }
+    if (window.dictionary) {
+        for (let key in window.dictionary) {
+            if (key.toLowerCase() === input || 
+                window.dictionary[key].transcription.toLowerCase() === input || 
+                window.dictionary[key].translation.toLowerCase() === input) {
+                result = `
+                    <p><strong>Эльфийское слово:</strong> ${key}</p>
+                    <p><strong>Транскрипция:</strong> ${window.dictionary[key].transcription}</p>
+                    <p><strong>Перевод:</strong> ${window.dictionary[key].translation}</p>`;
+                break;
+            }
+        }
+    }
 
-       loadDictionary();
+    document.getElementById('output').innerHTML = result;
+}
+
+loadDictionary();
     </script>
 </body>
 </html>
