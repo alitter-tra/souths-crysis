@@ -1,0 +1,227 @@
+[
+    {
+        "phrase": "Heil!",
+        "transcription": "хайл!",
+        "translation": "Привет."
+    },
+    {
+        "phrase": "Aen naam zai Hafsa.",
+        "transcription": "аэн наам заи Хафса.",
+        "translation": "Мое имя Хафса."
+    },
+    {
+        "phrase": "Aen zai Vaen’skaar Sultan.",
+        "transcription": "аэн заи ваэн’скаар султан.",
+        "translation": "Я жена султана."
+    },
+    {
+        "phrase": "Aen will kauf thazü.",
+        "transcription": "аэн вилль кауф тхазю.",
+        "translation": "Хочу купить это."
+    },
+    {
+        "phrase": "Aen zai Rán’theris.",
+        "transcription": "аэн заи ран’тэрис.",
+        "translation": "Я друг."
+    },
+    {
+        "phrase": "Viir zai Vaan’theris.",
+        "transcription": "виир заи ваан’тэрис.",
+        "translation": "Мы - ваши друзья."
+    },
+    {
+        "phrase": "Ja.",
+        "transcription": "я.",
+        "translation": "Да."
+    },
+    {
+        "phrase": "Naar.",
+        "transcription": "наар.",
+        "translation": "Нет."
+    },
+    {
+        "phrase": "Lass tausch’kaar.",
+        "transcription": "ласс тауш’каар.",
+        "translation": "Давай торговаться."
+    },
+    {
+        "phrase": "Thaz aen kaarn’zaal.",
+        "transcription": "тхаз аэн каарн’заал.",
+        "translation": "Это моя семья."
+    },
+    {
+        "phrase": "Thaz thaar vaen’skaar Sultan.",
+        "transcription": "тхаз тхаар ваэн’скаар султан.",
+        "translation": "Он - султан."
+    },
+    {
+        "phrase": "Thaz thaar Kriegir’thur.",
+        "transcription": "тхаз тхаар кригир’тхур.",
+        "translation": "Он генерал."
+    },
+    {
+        "phrase": "Thaz thaar Raen’thal.",
+        "transcription": "тхаз тхаар раэн’тхал.",
+        "translation": "Он - пророк."
+    },
+    {
+        "phrase": "Thaz thaar Schwertir Sultan.",
+        "transcription": "тхаз тхаар швэртир султан.",
+        "translation": "Он - меч султана."
+    },
+    {
+        "phrase": "Thaz zai Khand.",
+        "transcription": "тхаз заи кханд.",
+        "translation": "Она - канд."
+    },
+    {
+        "phrase": "Thaz zai Vaenblut. Viir ehre und morr’kaar thaz.",
+        "transcription": "тхаз заи ваэнблут. виир эрэ унд морр’каар тхаз.",
+        "translation": "Она убийца. Мы уважаем и боимся её."
+    },
+    {
+        "phrase": "Aen leth naar gold.",
+        "transcription": "аэн летх наар гальд.",
+        "translation": "У меня нет денег."
+    },
+    {
+        "phrase": "Aen brauch thaar’kaar.",
+        "transcription": "аэн браух тхаар’каар.",
+        "translation": "Мне нужна помощь."
+    },
+    {
+        "phrase": "Waar thaan Krieg’thur?",
+        "transcription": "ваар таан криг’тхур?",
+        "translation": "Как пройти к аванпосту?"
+    },
+    {
+        "phrase": "Waar dein naam?",
+        "transcription": "ваар дайн наам?",
+        "translation": "Как тебя зовут?"
+    },
+    {
+        "phrase": "Waar dein Kriegir’thur?",
+        "transcription": "ваар дайн кригир’тхур?",
+        "translation": "Где твой командир?"
+    },
+    {
+        "phrase": "Aen leth’sehn thaar hass, maar aen zai naar vaenthir.",
+        "transcription": "аэн летх’зэн тхаар хасс, маар аэн заи наар ваэн’тир.",
+        "translation": "Я знаю, что вы ненавидите меня, но я не враг."
+    },
+    {
+        "phrase": "Aen komn spre’raen, naar krieg.",
+        "transcription": "аэн комн шпрэ’раэн, наар криг.",
+        "translation": "Я пришла говорить, не сражаться."
+    },
+    {
+        "phrase": "Aen naar morr’kaar thaz.",
+        "transcription": "аэн наар морр’каар тхаз.",
+        "translation": "Я не боюсь смерти."
+    },
+    {
+        "phrase": "Ehre thaz blut?",
+        "transcription": "эрэ тхаз блут?",
+        "translation": "Ты уважаешь свою кровь?"
+    },
+    {
+        "phrase": "Wenn aen vaen’gold zahl, hilfst thaar?",
+        "transcription": "венн аэн ваэн’голд цаль, хильфст тхаар?",
+        "translation": "Если я дам золото, ты мне поможешь?"
+    },
+    {
+        "phrase": "Aen zai naar zaal, naar karr, naar vieh.",
+        "transcription": "аэн заи наар заал, наар карр, наар фий.",
+        "translation": "Я не слуга, не раб и не зверь."
+    },
+    {
+        "phrase": "Viir leth vaen’vaenthir.",
+        "transcription": "виир летх ваэн’ваэн’тир.",
+        "translation": "У нас общий враг."
+    },
+    {
+        "phrase": "Krieg naar brech viir.",
+        "transcription": "криг наар брэх виир.",
+        "translation": "Война нас не сломает."
+    },
+    {
+        "phrase": "Hör aen, bevor thaar schwert zieh.",
+        "transcription": "хёр аэн, бэвор тхаар швэрт цих.",
+        "translation": "Слушай меня, прежде чем обнажить клинок."
+    },
+    {
+        "phrase": "Aen spre raen’thal, maar naar thaar stimme.",
+        "transcription": "аэн шпрэ раэн’тхал, маар наар тхаар стиммэ.",
+        "translation": "Я говорю на вашем языке, но не знаю ваши души"
+    },
+    {
+        "phrase": "Hadi zai Vaen’skaar von Züüd.",
+        "transcription": "хади заи ваэн’скаар фон зюд.",
+        "translation": "Хади - владыка Юга."
+    },
+    {
+        "phrase": "Hadi zai Herrscher von Wüste.",
+        "transcription": "хади заи херршэр фон вюстэ.",
+        "translation": "Хади - правитель пустыни."
+    },
+    {
+        "phrase": "Shahir zai Schwert von Sultan.",
+        "transcription": "шахир заи швэрт фон султан.",
+        "translation": "Шахир - меч султана."
+    },
+    {
+        "phrase": "Khefni zai Blut von Dämon.",
+        "transcription": "кхефни заи блут фон дэ’мон.",
+        "translation": "Кхефни - кровь демона."
+    },
+    {
+        "phrase": "Khefni zai Kriegir’thur.",
+        "transcription": "кхефни заи кригир’тхур.",
+        "translation": "Кхефни - военачальник."
+    },
+    {
+        "phrase": "Shaya zai Khand.",
+        "transcription": "шая заи кханд.",
+        "translation": "Шая - канд."
+    },
+    {
+        "phrase": "Shaya zai ein bezgalter Tod.",
+        "transcription": "шая заи айн бэцгальтэр тод.",
+        "translation": "Шая - наемный убийца"
+    },
+    {
+        "phrase": "Tovas zai Raen’thal.",
+        "transcription": "товас заи раэн’тхал.",
+        "translation": "Товас - пророк."
+    },
+    {
+        "phrase": "Tovas liebt Wein, Gold, Frauen und Spre.",
+        "transcription": "товас либт вайн, голд, фрауэн унд шпре.",
+        "translation": "Товас любит вино, золото, женщин и говорить."
+    },
+    {
+        "phrase": "Fort, Karr!",
+        "transcription": "форт, карр!",
+        "translation": "Прочь, человек!"
+    },
+    {
+        "phrase": "Karr ehre nur Morr’kaar.",
+        "transcription": "карр эрэ нур морр’каар.",
+        "translation": "Человек уважает только от страха."
+    },
+    {
+        "phrase": "Krieg mit Karr - Kaarnspiel.",
+        "transcription": "криг мит карр - каарн’шпиль.",
+        "translation": "Война с человеком - развлечение."
+    },
+    {
+        "phrase": "Züykar? Dhaan’schmutz.",
+        "transcription": "зюй’кар? дхаан’шмуц.",
+        "translation": "Южанин? Песчаная грязь."
+    },
+    {
+        "phrase": "Schwestr Karr - Kaarn’schande.",
+        "transcription": "швэстр карр - каарн’шандэ.",
+        "translation": "Сестра человек - позор дома."
+    }
+]
