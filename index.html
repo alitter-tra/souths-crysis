@@ -50,7 +50,7 @@
     <h1>📜 Эльфийский Переводчик 📜</h1>
     <div class="container">
         <input type="text" id="search" placeholder="Введите слово или перевод...">
-        <button onclick="translateWord()">🔮 Перевести</button>
+        <button id="translateBtn">🔮 Перевести</button>
         <div id="output" class="result"></div>
     </div>
 
@@ -78,14 +78,17 @@
             }
 
             const input = document.getElementById('search').value.trim().toLowerCase();
-            let result = "<p>Слово не найдено.</p>";
+            if (input === "") return;
+
             let foundWords = [];
             let foundPhrases = [];
 
             for (let key in dictionary) {
-                if (key.toLowerCase().includes(input) || 
-                    dictionary[key].transcription.toLowerCase().includes(input) || 
-                    dictionary[key].translation.toLowerCase().includes(input)) {
+                let elfenWord = key.toLowerCase();
+                let transcription = dictionary[key].transcription.toLowerCase();
+                let translation = dictionary[key].translation.toLowerCase();
+
+                if (elfenWord.includes(input) || transcription.includes(input) || translation.includes(input)) {
                     foundWords.push(`
                         <p><strong>Эльфийское слово:</strong> ${key}</p>
                         <p><strong>Транскрипция:</strong> ${dictionary[key].transcription}</p>
@@ -100,15 +103,21 @@
                 }
             });
 
+            let result = "";
             if (foundWords.length > 0) {
-                result = `<h3>🔍 Найденные слова:</h3> ${foundWords.join("")}`;
+                result += `<h3>🔍 Найденные слова:</h3> ${foundWords.join("")}`;
             }
             if (foundPhrases.length > 0) {
                 result += `<h3>📜 Найденные фразы:</h3> ${foundPhrases.join("")}`;
             }
+            if (result === "") {
+                result = "<p>Слово не найдено.</p>";
+            }
 
             document.getElementById('output').innerHTML = result;
         }
+
+        document.getElementById('translateBtn').addEventListener("click", translateWord);
 
         document.getElementById('search').addEventListener("keypress", function(event) {
             if (event.key === "Enter") {
