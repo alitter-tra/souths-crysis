@@ -62,17 +62,21 @@
             try {
                 const dictResponse = await fetch("https://raw.githubusercontent.com/alitter-tra/souths-crysis/main/dictionary.json");
                 dictionary = await dictResponse.json();
-                
+
                 const phrasesResponse = await fetch("https://raw.githubusercontent.com/alitter-tra/souths-crysis/main/phrases.json");
                 phrases = await phrasesResponse.json();
-                
-                console.log("Словарь и фразы загружены");
+
+                console.log("✅ Словарь и фразы загружены!");
             } catch (error) {
-                console.error("Ошибка загрузки словаря:", error);
+                console.error("❌ Ошибка загрузки словаря:", error);
             }
         }
 
-        function translateWord() {
+        async function translateWord() {
+            if (Object.keys(dictionary).length === 0) {
+                await loadDictionary(); // Грузим словарь, если он еще пуст
+            }
+
             const input = document.getElementById('search').value.trim().toLowerCase();
             let result = "<p>Слово не найдено.</p>";
             let foundPhrases = [];
@@ -88,7 +92,6 @@
                 }
             }
 
-            // Проверяем, есть ли это слово в фразах
             phrases.forEach(item => {
                 if (item.phrase.toLowerCase().includes(input) || item.translation.toLowerCase().includes(input)) {
                     foundPhrases.push(`<p>📜 ${item.phrase} → ${item.translation}</p>`);
@@ -102,7 +105,7 @@
             document.getElementById('output').innerHTML = result;
         }
 
-        loadDictionary();
+        loadDictionary(); // Загружаем данные сразу при загрузке страницы
     </script>
 </body>
 </html>
