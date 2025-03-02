@@ -19,12 +19,16 @@
             border-radius: 15px;
             display: inline-block;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            max-width: 600px;
         }
         input, button {
             font-size: 18px;
             padding: 10px;
             border-radius: 8px;
             border: none;
+            width: 90%;
+            margin: 10px 0;
         }
         button {
             background: #7a5230;
@@ -37,7 +41,7 @@
         }
         .result {
             margin-top: 20px;
-            font-size: 20px;
+            font-size: 18px;
             padding: 10px;
         }
     </style>
@@ -51,40 +55,54 @@
     </div>
 
     <script>
-       async function loadDictionary() {
-    try {
-        const response = await fetch("https://script.google.com/macros/s/AKfycbwF_CiSzYzldRD7krMYrvnMEDAz9QCYP30UhEkTcsSx6Ab9RFMheuw_v8vyBa2p9p6J-A/exec", {
-            mode: 'no-cors' // Отключаем CORS
-        });
-        const dictionary = await response.json();
-        window.dictionary = dictionary;
-    } catch (error) {
-        console.error("Ошибка загрузки словаря: ", error);
-    }
-}
+        let dictionary = {};
+        let phrases = [];
 
-function translateWord() {
-    const input = document.getElementById('search').value.trim().toLowerCase();
-    let result = "<p>Слово не найдено.</p>";
-
-    if (window.dictionary) {
-        for (let key in window.dictionary) {
-            if (key.toLowerCase() === input || 
-                window.dictionary[key].transcription.toLowerCase() === input || 
-                window.dictionary[key].translation.toLowerCase() === input) {
-                result = `
-                    <p><strong>Эльфийское слово:</strong> ${key}</p>
-                    <p><strong>Транскрипция:</strong> ${window.dictionary[key].transcription}</p>
-                    <p><strong>Перевод:</strong> ${window.dictionary[key].translation}</p>`;
-                break;
+        async function loadDictionary() {
+            try {
+                const dictResponse = await fetch("https://raw.githubusercontent.com/alitter-tra/souths-crysis/main/dictionary.json");
+                dictionary = await dictResponse.json();
+                
+                const phrasesResponse = await fetch("https://raw.githubusercontent.com/alitter-tra/souths-crysis/main/phrases.json");
+                phrases = await phrasesResponse.json();
+                
+                console.log("Словарь и фразы загружены");
+            } catch (error) {
+                console.error("Ошибка загрузки словаря:", error);
             }
         }
-    }
 
-    document.getElementById('output').innerHTML = result;
-}
+        function translateWord() {
+            const input = document.getElementById('search').value.trim().toLowerCase();
+            let result = "<p>Слово не найдено.</p>";
+            let foundPhrases = [];
 
-loadDictionary();
+            for (let key in dictionary) {
+                if (key.toLowerCase() === input || 
+                    dictionary[key].transcription.toLowerCase() === input || 
+                    dictionary[key].translation.toLowerCase() === input) {
+                    result = `
+                        <p><strong>Эльфийское слово:</strong> ${key}</p>
+                        <p><strong>Транскрипция:</strong> ${dictionary[key].transcription}</p>
+                        <p><strong>Перевод:</strong> ${dictionary[key].translation}</p>`;
+                }
+            }
+
+            // Проверяем, есть ли это слово в фразах
+            phrases.forEach(item => {
+                if (item.phrase.toLowerCase().includes(input) || item.translation.toLowerCase().includes(input)) {
+                    foundPhrases.push(`<p>📜 ${item.phrase} → ${item.translation}</p>`);
+                }
+            });
+
+            if (foundPhrases.length > 0) {
+                result += `<h3>🔍 Найденные фразы:</h3> ${foundPhrases.join("")}`;
+            }
+
+            document.getElementById('output').innerHTML = result;
+        }
+
+        loadDictionary();
     </script>
 </body>
 </html>
